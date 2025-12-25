@@ -55,7 +55,7 @@ pipeline {
         }
         stage('Publish to Nexus') {
             steps {
-                withMaven(globalMavenSettingsConfig: 'maven-setting', jdk: 'jdk17', maven: 'maven') {
+                withMaven(globalMavenSettingsConfig: 'mven-setting', jdk: 'jdk17', maven: 'maven') {
                     sh "mvn deploy -DskipTests=true"
                 }
             }
