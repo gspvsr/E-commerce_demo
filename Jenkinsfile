@@ -17,6 +17,12 @@ pipeline {
                 git 'https://github.com/gspvsr/E-commerce_demo.git' 
             }
         }
+
+        stage ('Maven complie') {
+            steps {
+                sh "mvn compile"
+            }
+        }
     }
 
 
