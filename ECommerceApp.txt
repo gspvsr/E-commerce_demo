@@ -663,7 +663,7 @@ Pipeline syntax --- Sample step: withKubeCredentials: Configure Kubernetes CLI (
 ___________________________________________________
 Ecommerce App - Successful (with K8S Stage)
 ___________________________________________________
-pipeline {
+pipeline { 
     agent any
 
     tools {
