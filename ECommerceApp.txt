@@ -413,7 +413,7 @@ Goto the Jenkins console ---> Manage Jenkins ---> Security ---> Credentials --->
 Manage Jenkins* ---> System ---> Scroll down to 'Extended Email Notification' ---> SMTP Server: smtp.gmail.com ---> SMTP Port: 465, Click on 'Advanced'  ---> Credentials: Select 'mail-cred' from drop down, 'Check' Use SSL and Use OAuth 2.0, Default content type: HTML
 
 Lets* make another configuration to get an email when build fails/success ---> Goto 'Default Triggers' drop down (If you cannot find this, try searching using control+f ---> 'Check' Always, Failure-Any, Success ---> Apply ---> Save 
-bnfiiejfercnstie
+
 =============================
 3.6. Job Creation
 =============================
