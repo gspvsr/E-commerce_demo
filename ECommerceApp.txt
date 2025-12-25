@@ -335,7 +335,8 @@ Step 3
 3.1. Jenkins Plugin Installation
 =============================
 Install below plugins;
-Eclipse Temurin Installer, SonarQube scanner, Docker, Docker Commons, Docker Pipeline, Docker API, docker-build-step, Pipeline stage view, Email Extension Template, Kubernetes, Kubernetes CLI, Kubernetes Client API, Kubernetes Credentials, Config File Provider, Maven Integration, Pipeline Maven Integration, Prometheus metrics ---> install ---> You will see error while installing Prometheus plugin. Read the error message. Here we need to restart the Jenkins ---> 'Check' the box below 'Go back to the top of page' to restart the Jenkins
+Eclipse Temurin Installer, SonarQube scanner, Docker, Docker Commons
+, Docker Pipeline, Docker API, docker-build-step, Pipeline stage view, Email Extension Template, Kubernetes, Kubernetes CLI, Kubernetes Client API, Kubernetes Credentials, Config File Provider, Maven Integration, Pipeline Maven Integration, Prometheus metrics ---> install ---> You will see error while installing Prometheus plugin. Read the error message. Here we need to restart the Jenkins ---> 'Check' the box below 'Go back to the top of page' to restart the Jenkins
 
 =============================                                           
 3.2. Tool Configuration
@@ -347,7 +348,7 @@ Goto the Jenkins console (since we restarted, login again to Jenkins) ---> Manag
 ==========================================
 Lets configure the SonarQube server;
 Goto SonarQube console --- Click on 'Administration' --- Click on 'Security' --- Select 'Users' --- You can see 'Tokens' --- Click on 3 dashes icon --- A New dialogue --- Name: token, Expires in: 90days --- Generate --- You can see token in green colour. Copy it. 
-Token: squ_dcc638876ea585af501be08adbb861667932da03
+Token: 
 
 Manage Jenkins --- Security --- Credentials --- Click on 'global' --- Click on 'Add Credentials' --- Kind: Secret text, Scope: Global, Secret: <Paste the token copied from SonarQube console>, ID: sonar-token, Description: sonar-token --- Create
 
@@ -401,7 +402,7 @@ Lets create a mail notification;
 ==============================
 Goto Gmail ---> Click on Icon on top right ---> Click on 'Your google account' ---> 'Security' (left pane) --->Make sure 2 step verification is on.
 
-Goto Gmail ---> Click on Icon on top right ---> Click on 'Your google account' ---> in search box at top, search for 'App  Passwords' and click on it, Enter password of gmail ---> Next ---> App name: jenkins ---> Create ---> You can see the password (ex: sbksmfpgvycqibug) ---> Copy it ---> Make sure to remove the spaces in the password. Lets configure this password in Jenkins.
+Goto Gmail ---> Click on Icon on top right ---> Click on 'Your google account' ---> in search box at top, search for 'App  Passwords' and click on it, Enter password of gmail ---> Next ---> App name: jenkins ---> Create ---> You can see the password (ex: ) ---> Copy it ---> Make sure to remove the spaces in the password. Lets configure this password in Jenkins.
 
 Manage Jenkins ---> System ---> Scroll down to 'Email Notification' ---> SMTP Server: smtp.gmail.com ---> Click on 'Advanced'  ---> 'Check' Use SMTP Authentication, Username: <ProvideEmailID>, Password: <PasteThePasswordToken>, 'Check' Use SSL, SMTP Port: 465, Reply-to-email: <ProvideEmail>, Charset: UTF-8,, Check 'Test configuration by sending test e-mail', Test Email Recepient: <provide-email-id>, Click on 'Test Configuration' ---> You can see 'email sent' ---> Goto email and check for test email
 
@@ -652,7 +653,7 @@ metadata:
 --- esc --- :wq --- kubectl create apply -f secret.yml -n <NameSpaceName i.e webapps> (MODIFIED COMMAND FOR DEVOPS EXAM APP: kubectl apply -f secret.yml -n webapps) --- Now the secret will get created inside the namespace --- To get the token --- kubectl describe secret <SecretName i.e mysecretname> -n <NameSpaceName i.e webapps> (MODIFIED COMMAND FOR DEVOPS EXAM APP: kubectl describe secret mysecretname -n webapps) --- You can see the token. Copy and paste in notepad
 We will configure this in Jenkins in sometime
 
-eyJhbGciOiJSUzI1NiIsImtpZCI6IkNxMkxsR3VNTVlsSGhNRHd2T1F1X1N1eUxOVnJfODdmZHVHZ0E2WHRmdjAifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJ3ZWJhcHBzIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6Im15c2VjcmV0bmFtZSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50Lm5hbWUiOiJqZW5raW5zIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiYjAxNmFmZjctOGE1OC00ZDEyLTlhYjEtY2EwYjcxMzQzYzc1Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50OndlYmFwcHM6amVua2lucyJ9.worPaZdFJfeswDgIghIngEjeiZ2x2V9yFQc9qLG3yyJRh5ZOnt3WiHeQkP_wfbLd5vt5r-WIsEA3BjFDI8KMaxgOa9lmrGa9jYQjaEyCw-oErDUz1Xh87Iby_OG1bkmij-sTU4GKXLyoavw5dEr5FLY0iAv2aoAzaUchb-MVoTmxWrTQa3RcVGeraOWIWkv-jP1bq-4eFGAeBm_1HG5KakWJ5Y7gnpNGn6RWAowh_9p0R-VMsirmSmeZ19_-FAdBg0zgjaHtcm317P5wUVMNNT3zxoWL9NN7_VAPFAIgW2SLKID45ww6bfEWiaFNaZETizKfZjhRW5rhS8sIevJe9g
+
 
 Lets create CD pipeline
 Dashboard --- Manage Jenkins --- Security --- Credentials --- Global credentials (unrestricted) --- Kind: secret text --- Scope: global --- Secret: Paste the token generated above --- ID: k8-token, Decription: k8-token --- Create
