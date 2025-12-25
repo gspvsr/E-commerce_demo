@@ -69,9 +69,31 @@ pipeline {
                 }
             }
         }
+        stage('Docker Image Scan') {
+            steps {
+                sh "trivy image --format table -o trivy-image-report.html ${DOCKER_IMAGE}"
+                archiveArtifacts artifacts: 'trivy-image-report.html', fingerprint: true
+            }
+        }
+
+        stage('Push Docker Image') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'dockerhub-cred') {
+                        sh "docker push ${DOCKER_IMAGE}"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy to Container') {
+            steps {
+                script {
+                    sh "docker stop ecommerce-container || true && docker rm ecommerce-container || true"
+                    sh "docker run -d --name ecommerce-container -p 8083:8080 ${DOCKER_IMAGE}"
+                }
+            }
+        }
     }
-
-
-
 
 }
