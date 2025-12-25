@@ -59,8 +59,7 @@ A total of 7 policies we have attached to the IAM User created in 1.3.1.
 Open the user created ----> Security Credentials tab ----> Create access key ----> Use case: CLI ----> Next ----> Create Keys ----> Download the csv file
 
 Now we have created the IAM User with appropriate permissions to create the EKS Cluster
-AKIA6G75DMYKLKKW364G
-YNvoMvkeA7uIiNmuw6C5YyLREpi2b1DlAozQWYU3
+
 =============================
 1.4. Creation of EKS Cluster 
 =============================
@@ -276,7 +275,7 @@ docker images
 docker ps
 
 Access SonarQube, after opening port 9000 for SonarQube server
-Default username and Password: admin
+Default username and Password: 
 Set new password
 =============================
 2.3 Nexus Setup
