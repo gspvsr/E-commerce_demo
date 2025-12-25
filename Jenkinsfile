@@ -63,7 +63,7 @@ pipeline {
         stage('Docker Build & Tag') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'dockerhub-cred') {
+                    withDockerRegistry(credentialsId: 'dockerhub-creds') {
                         sh "docker build -t ${DOCKER_IMAGE} ."
                     }
                 }
@@ -79,7 +79,7 @@ pipeline {
         stage('Push Docker Image') {
             steps {
                 script {
-                    withDockerRegistry(credentialsId: 'dockerhub-cred') {
+                    withDockerRegistry(credentialsId: 'dockerhub-creds') {
                         sh "docker push ${DOCKER_IMAGE}"
                     }
                 }
