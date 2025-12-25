@@ -13,7 +13,7 @@ pipeline {
 
     stages {
         stage ('git checkout') {
-            step {
+            steps {
                 git 'https://github.com/gspvsr/E-commerce_demo.git' 
             }
         }
