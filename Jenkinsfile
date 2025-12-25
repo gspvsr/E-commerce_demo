@@ -60,6 +60,15 @@ pipeline {
                 }
             }
         }
+        stage('Docker Build & Tag') {
+            steps {
+                script {
+                    withDockerRegistry(credentialsId: 'dockerhub-cred') {
+                        sh "docker build -t ${DOCKER_IMAGE} ."
+                    }
+                }
+            }
+        }
     }
 
 
